@@ -23,6 +23,11 @@ body {
     width: 100%;
 }
 
+.col {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 
