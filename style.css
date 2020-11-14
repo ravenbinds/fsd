@@ -233,3 +233,67 @@ span.psw {
 .section-discover-body .col:hover .caption-text {
     visibility: visible;
 }
+
+
+/* -- Section Explore -- */
+
+.section-explore {
+    margin-top: 60px;
+    background: url("https://images.pexels.com/photos/165939/pexels-photo-165939.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 82vh;
+    position: relative;
+}
+
+.section-explore .overlay {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-explore .overlay .caption {
+    width: 100%;
+}
+
+.section-explore .overlay .caption h2 {
+    text-transform: uppercase;
+    font-family: "Montserrat-Medium";
+}
+
+.section-explore .overlay .caption img {
+    width: 65%;
+}
+
+@media (max-width: 420px) {
+    .section-explore {
+        height: 40vh;
+    }
+    .section-explore .overlay .caption img {
+        width: 90%;
+    }
+}
+
+
+/* Texture Handler */
+
+.texture-handler-top {
+    width: 100%;
+    height: 24px;
+    background: url("images/texture-top.png");
+    position: absolute;
+}
+
+.texture-handler-bottom {
+    width: 100%;
+    height: 17px;
+    background: url("images/texture-bottom.png");
+    bottom: 0;
+    position: absolute;
+}
