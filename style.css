@@ -28,6 +28,20 @@ body {
     padding-right: 0px !important;
 }
 
+.card-img-top {
+    height: 70%;
+}
+
+.card-title {
+    padding-top: 10px;
+    font-size: larger;
+}
+
+.bg-image-full {
+    background-size: cover;
+    height: 500px;
+}
+
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 
