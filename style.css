@@ -317,37 +317,47 @@ span.psw {
     position: absolute;
 }
 
-form .field .showBtn {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    display: none;
-    user-select: none;
-}
 
-form .indicator {
-    height: 10px;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    display: none;
-}
+/* The message box is shown when the user clicks on the password field */
 
-form .indicator span {
+#message {
+    display: none;
+    background: #f1f1f1;
+    color: #000;
     position: relative;
-    height: 100%;
-    width: 100%;
-    background: lightgrey;
-    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
 }
 
-form .indicator span:nth-child(2) {
-    margin: 0 3px;
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+
+/* Add a green text color and a checkmark when the requirements are right */
+
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "Okay:)";
+}
+
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "Nope:(";
 }
 
 form .indicator span.active:before {
@@ -370,6 +380,13 @@ form .indicator span.active:before {
 
 .indicator span.strong:before {
     background-color: #23ad5c;
+}
+
+form .text {
+    font-size: 20px;
+    font-weight: 500;
+    display: none;
+    margin-bottom: -10px;
 }
 
 form .text.weak {

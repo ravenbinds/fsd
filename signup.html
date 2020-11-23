@@ -13,6 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <title>Kerala Tourism</title>
+
 </head>
 
 <body>
@@ -38,7 +39,7 @@
                         <a class="nav-link" href="login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Signup</a>
+                        <a class="nav-link" href="signup.html">Signup</a>
                     </li>
                 </ul>
             </div>
@@ -59,9 +60,18 @@
                 <input type="text" placeholder="Enter phone no." id="phone" name="phone" required>
 
                 <label for="psw"><b>Password</b></label>
-                <div class="field">
-                    <input onkeyup="trigger()" type="password" placeholder="Type password">
+                <input type="password" id="psw" name="psw" placeholder="Type password">
+
+                <div id="message">
+                    <h3>Password must contain the following:</h3>
+                    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="number" class="invalid">A <b>number</b></p>
+                    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                 </div>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                </label>
                 <div class="indicator">
                     <span class="weak"></span>
                     <span class="medium"></span>
@@ -69,18 +79,18 @@
                 </div>
                 <div class="text">
                 </div>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                </label>
 
                 <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</p>
 
                 <div class="clearfix" style="padding-bottom: 10px;">
                     <button type="submit" class="signupbtn">Sign Up</button>
                 </div>
+
             </div>
         </form>
+
     </div>
+
     <script type="text/javascript">
         function validate() {
 
@@ -119,67 +129,66 @@
                 return true;
             }
         }
-        const indicator = document.querySelector(".indicator");
-        const input = document.querySelector("input");
-        const weak = document.querySelector(".weak");
-        const medium = document.querySelector(".medium");
-        const strong = document.querySelector(".strong");
-        const text = document.querySelector(".text");
-        let regExpWeak = /[a-z]/;
-        let regExpMedium = /\d+/;
-        let regExpStrong = /.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/;
+    </script>
+    <script>
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
 
-        function trigger() {
-            if (input.value != "") {
-                indicator.style.display = "block";
-                indicator.style.display = "flex";
-                if (input.value.length <= 3 && (input.value.match(regExpWeak) || input.value.match(regExpMedium) || input.value.match(regExpStrong))) no = 1;
-                if (input.value.length >= 6 && ((input.value.match(regExpWeak) && input.value.match(regExpMedium)) || (input.value.match(regExpMedium) && input.value.match(regExpStrong)) || (input.value.match(regExpWeak) && input.value.match(regExpStrong)))) no = 2;
-                if (input.value.length >= 6 && input.value.match(regExpWeak) && input.value.match(regExpMedium) && input.value.match(regExpStrong)) no = 3;
-                if (no == 1) {
-                    weak.classList.add("active");
-                    text.style.display = "block";
-                    text.textContent = "Your password is too weak";
-                    text.classList.add("weak");
-                }
-                if (no == 2) {
-                    medium.classList.add("active");
-                    text.textContent = "Your password is at medium level";
-                    text.classList.add("medium");
-                } else {
-                    medium.classList.remove("active");
-                    text.classList.remove("medium");
-                }
-                if (no == 3) {
-                    weak.classList.add("active");
-                    medium.classList.add("active");
-                    strong.classList.add("active");
-                    text.textContent = "Your password is strong";
-                    text.classList.add("strong");
-                } else {
-                    strong.classList.remove("active");
-                    text.classList.remove("strong");
-                }
-                showBtn.style.display = "block";
-                showBtn.onclick = function() {
-                    if (input.type == "password") {
-                        input.type = "text";
-                        showBtn.textContent = "HIDE";
-                        showBtn.style.color = "#23ad5c";
-                    } else {
-                        input.type = "password";
-                        showBtn.textContent = "SHOW";
-                        showBtn.style.color = "#000";
-                    }
-                }
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function() {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
             } else {
-                indicator.style.display = "none";
-                text.style.display = "none";
-                showBtn.style.display = "none";
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
             }
         }
     </script>
-
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
