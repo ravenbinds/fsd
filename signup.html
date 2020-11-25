@@ -92,7 +92,10 @@
     </div>
 
     <script type="text/javascript">
+        var checkpassword = false;
+
         function validate() {
+            checkpassword = validpassword();
 
             var name = document.forms["myform"]["name"].value;
             if (name == "") {
@@ -122,15 +125,16 @@
                     return false;
                 }
             }
-            if (check == 0) {
+
+
+            if (checkpassword == false) {
                 alert("Please enter valid password");
                 return false;
             } else {
                 return true;
             }
         }
-    </script>
-    <script>
+
         var myInput = document.getElementById("psw");
         var letter = document.getElementById("letter");
         var capital = document.getElementById("capital");
@@ -187,6 +191,13 @@
                 length.classList.remove("valid");
                 length.classList.add("invalid");
             }
+        }
+
+        function validpassword() {
+            if (letter.classList.contains("invalid") || number.classList.contains("invalid") || length.classList.contains("invalid") || capital.classList.contains("invalid")) {
+                return false;
+            }
+            return true;
         }
     </script>
     <!-- Footer -->
