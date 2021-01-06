@@ -1,0 +1,53 @@
+.align {
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+    font-size: large;
+    border: 1px solid black;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(6, 0, 97);
+    font-size: xx-large;
+    font-family: comic sans ms;
+}
+
+td {
+    background-color: #251010;
+    border: 1px solid rgb(15, 4, 4);
+}
+
+th,
+td {
+    font-family: comic sans ms;
+    background-color: #251010;
+    font-weight: bold;
+    border: 1px solid rgb(58, 51, 51);
+    padding: 10px;
+    text-align: center;
+    color: #fff5f5;
+}
+
+td {
+    font-weight: lighter;
+}
+
+#select {
+    margin-left: 420px;
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+.form-group {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 20px;
+    font-size: larger;
+    color: rgb(6, 0, 97);
+}
